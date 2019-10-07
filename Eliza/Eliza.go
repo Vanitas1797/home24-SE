@@ -39,10 +39,14 @@ var reflexivesAfter = map[string]string{
 	"mine":   "yours",
 }
 
-var mapMain = map[string][]string{
+var statement = map[string][]string{
 	"i need ": {"Why do you need %s?",
 		"Would it really help you to get %s?",
 		"Are you sure you need %s?"},
+}
+
+var question = map[string][]string{
+
 }
 
 func main() {
@@ -125,7 +129,7 @@ func response(input string) {
 	for _, s1 := range s {
 		s2 = s2 + s1 + " "
 		//fmt.Println("s2", s2)
-		_, ok := mapMain[s2]
+		_, ok := statement[s2]
 		if ok {
 			key = s2
 			break
@@ -147,7 +151,7 @@ func response(input string) {
 	// fmt.Println("key", key)
 	// fmt.Println("len(key)", len(key))
 	// fmt.Println("r", r)
-	n := randomNumber(len(mapMain[key]))
-	fmt.Printf("Eliza:\t"+mapMain[key][n], r)
+	n := randomNumber(len(statement[key]))
+	fmt.Printf("Eliza:\t"+statement[key][n], r)
 	fmt.Printf("\nYou:\t")
 }
